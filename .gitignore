@@ -16,6 +16,10 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+!/tmp/sockets/.gitkeep
+!/tmp/pids/.gitkeep
+!/tmp/sessions/.gitkeep
+!/tmp/cache/.gitkeep
 
 /node_modules
 /yarn-error.log
