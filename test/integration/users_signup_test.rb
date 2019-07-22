@@ -3,28 +3,24 @@ require 'test_helper'
 class UsersSignupTest < ActionDispatch::IntegrationTest
 
   test "invalid signup information" do
-    get signup_path
+    get root_path
     assert_no_difference 'User.count' do
-      post users_path, params: { user: { name:  "",
-                                         email: "user@invalid",
-                                         password:              "foo",
-                                         password_confirmation: "bar" } }
+      post login_path, params: { session: { email: "user@invalid",
+                                         password:              ""} }
     end
-    assert_template 'users/new'
-    assert_select 'div#error_explanation'
-    assert_select 'div.field_with_errors'
+    follow_redirect!
+    assert_template 'static_pages/home'
+    assert_not is_logged_in?
   end
 
   test "valid signup information" do
-    get signup_path
+    get root_path
     assert_difference 'User.count', 1 do
-      post users_path, params: { user: { name:  "Example User",
-                                         email: "user@example.com",
-                                         password:              "password",
-                                         password_confirmation: "password" } }
+      post login_path, params: { session: { email: "user@example.com",
+                                         password:              "password" } }
     end
     follow_redirect!
-    assert_template 'users/show'
+    assert_template 'static_pages/home'
     assert is_logged_in?
   end
 end
