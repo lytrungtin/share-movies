@@ -7,7 +7,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_template 'static_pages/home'
     assert_match Share.count.to_s, response.body
     Share.paginate(page: 1).each do |share|
-      assert_match share.url, response.body
+      assert_match share.uid, response.body
     end
-    end
+  end
 end

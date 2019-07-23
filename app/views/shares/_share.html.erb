@@ -1,8 +1,19 @@
-<li id="share-<%= share.id %>">
-    <iframe width="100%" src="<%= share.url %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <span class="title"><%= share.title %></span>
-    <span class="user">Shared by: <%= share.user.email %></span>
-    <span class="timestamp">
-      Posted <%= time_ago_in_words(share.created_at) %> ago.
-    </span>
-</li>
+<div class="row">
+  <div class="col-md-4">
+    <iframe src='https://www.youtube.com/embed/<%= share.uid %>?rel=0&autoplay=0' frameborder='0' allowfullscreen></iframe>
+  </div>
+  <div class="col-md-6">
+    <p>
+      <span class="title"><%= share.title %></span>
+    </p>
+    <p>
+      <span class="user">Shared by: <%= share.user.email || 0 %></span>
+    </p>
+    <p>
+      <%= share.likes %> <span class="glyphicon glyphicon glyphicon-thumbs-up"></span>
+      <%= share.dislikes %> <span class="glyphicon glyphicon glyphicon-thumbs-down"></span>
+    </p>
+    <span>Description:</span>
+    <p><%= share.description %></p>
+  </div>
+</div>

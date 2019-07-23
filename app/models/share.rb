@@ -4,5 +4,6 @@ class Share < ApplicationRecord
   belongs_to :user
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true
-  validates :url, presence: true, format: YT_LINK_FORMAT
+  validates :url, presence: true, format: YT_LINK_FORMAT,
+            uniqueness: { case_sensitive: false }
 end

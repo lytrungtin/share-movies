@@ -1,7 +1,8 @@
 <%= form_for(@share) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
-  <div class="field">
-    <%= f.text_field :url, placeholder: "Youtube URL" %>
+  <div class="form-group">
+    <%= f.label :link , "Youtube URL" %>
+    <%= f.text_field :url, class: 'form-control', required: true %>
     <%= f.submit "Share", class: "btn btn-primary" %>
   </div>
 <% end %>

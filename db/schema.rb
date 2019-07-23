@@ -16,9 +16,14 @@ ActiveRecord::Schema.define(version: 20190722142253) do
     t.string "url"
     t.string "title"
     t.text "description"
+    t.datetime "published_at"
+    t.integer "likes"
+    t.integer "dislikes"
+    t.string "uid"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["uid"], name: "index_shares_on_uid"
     t.index ["url"], name: "index_shares_on_url", unique: true
     t.index ["user_id", "created_at"], name: "index_shares_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_shares_on_user_id"

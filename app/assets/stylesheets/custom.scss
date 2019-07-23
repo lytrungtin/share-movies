@@ -65,7 +65,8 @@ p {
 /* header */
 
 .navbar-inverse {
-  background-color: #fff;
+  background-color: #fff!important;
+  background-image: none;
   .navbar-nav > li {
     a {
       background: #cac4c4;
@@ -213,21 +214,17 @@ input {
 .shares {
   list-style: none;
   padding: 0;
-  li {
+  div {
     padding: 10px 0;
     border-top: 1px solid #e8e8e8;
   }
   .title {
     display: block;
     margin-left: 60px;
+    color: red;
   }
   .user {
     margin-top: 5em;
     padding-top: 0;
-  }
-  .timestamp {
-    color: $gray-light;
-    display: block;
-    margin-left: 60px;
   }
 }

@@ -1,11 +1,7 @@
 <% provide(:title, "Home") %>
-
-<div class="col-md-8">
+<div class="shares">
   <% if @shares.any? %>
-    <h3>Shares (<%= @shares.count %>)</h3>
-    <ol class="shares">
-      <%= render @shares %>
-    </ol>
+    <%= render @shares %>
     <%= will_paginate @shares %>
   <% end %>
 </div>
