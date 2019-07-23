@@ -5,7 +5,6 @@
     <% end %>
     <nav>
       <%= form_for(:session, url: login_path) do |f| %>
-      <%= render 'shared/error_messages' %>
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
           <li><%= link_to "Share a movie", share_path %></li>

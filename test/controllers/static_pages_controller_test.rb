@@ -15,7 +15,7 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
   test "should get share" do
     get share_path
     assert_response :success
-    assert_select "title", "Help | #{@base_title}"
+    assert_select "title", "Share | #{@base_title}"
   end
 
 end

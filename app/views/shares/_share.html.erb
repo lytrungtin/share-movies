@@ -1,0 +1,8 @@
+<li id="share-<%= share.id %>">
+    <iframe width="100%" src="<%= share.url %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <span class="title"><%= share.title %></span>
+    <span class="user">Shared by: <%= share.user.email %></span>
+    <span class="timestamp">
+      Posted <%= time_ago_in_words(share.created_at) %> ago.
+    </span>
+</li>
