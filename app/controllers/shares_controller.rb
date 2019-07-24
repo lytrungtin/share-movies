@@ -1,5 +1,5 @@
 class SharesController < ApplicationController
-  before_action :logged_in_user, only: [:create]
+  before_action :logged_in_user, only: [:create, :destroy]
 
   def create
     @share = current_user.shares.build(share_params)
