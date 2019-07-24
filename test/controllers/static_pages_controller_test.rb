@@ -3,7 +3,7 @@ require 'test_helper'
 class StaticPagesControllerTest < ActionDispatch::IntegrationTest
 
   def setup
-    @base_title = "Ruby on Rails Tutorial Sample App"
+    @base_title = "Funny Movies"
     @user = users(:tintin)
   end
 
@@ -14,6 +14,11 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get share" do
+    get share_path
+    assert_redirected_to root_url
+    post login_path, params: { session: { email:    @user.email,
+                                          password: 'password' } }
+
     get share_path
     assert_response :success
     assert_select "title", "Share | #{@base_title}"

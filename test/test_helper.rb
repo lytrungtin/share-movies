@@ -8,6 +8,10 @@ class ActiveSupport::TestCase
   fixtures :all
   include ApplicationHelper
 
+  def setup
+    Rails.application.load_seed
+  end
+
   # Returns true if a test user is logged in.
   def is_logged_in?
     !session[:user_id].nil?
