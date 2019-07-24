@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   get  '/share',    to: 'static_pages#share'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-  resources :shares,          only: [:create]
+  resources :shares, param: :share_id
 end

@@ -4,7 +4,7 @@
   </div>
   <div class="col-md-6">
     <p>
-      <span class="title"><%= share.title %></span>
+      <span class="title"><%= share.title %></span> <a data-confirm="Are you sure?" data-method="delete" href="/shares/<%= share.id %>" rel="nofollow">Delete</a>
     </p>
     <p>
       <span class="user">Shared by: <%= share.user.email || 0 %></span>
@@ -14,6 +14,6 @@
       <%= share.dislikes %> <span class="glyphicon glyphicon glyphicon-thumbs-down"></span>
     </p>
     <span>Description:</span>
-    <p class="description"><%=h truncate(share.description, length: 50) %></p>
+    <p class="description"><%=h truncate(share.description, length: 150) %></p>
   </div>
 </div>
