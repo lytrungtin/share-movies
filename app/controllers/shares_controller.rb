@@ -12,7 +12,7 @@ class SharesController < ApplicationController
   end
 
   def destroy
-    @share = Share.find(params[:share_id])
+    @share = current_user.shares.find(params[:share_id])
     if @share.destroy
       flash[:success] = "Share destroyed!"
       redirect_to root_url

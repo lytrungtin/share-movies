@@ -4,14 +4,17 @@
   </div>
   <div class="col-md-6">
     <p>
-      <span class="title"><%= share.title %></span> <a data-confirm="Are you sure?" data-method="delete" href="/shares/<%= share.id %>" rel="nofollow">Delete</a>
+      <span class="title"><%= share.title %></span>
+      <% if logged_in? && share.user.id == @current_user.id %>
+        <a data-confirm="Are you sure?" data-method="delete" href="/shares/<%= share.id %>" rel="nofollow">Delete</a>
+      <% end %>
     </p>
     <p>
       <span class="user">Shared by: <%= share.user.email || 0 %></span>
     </p>
     <p>
-      <%= share.likes %> <span class="glyphicon glyphicon glyphicon-thumbs-up"></span>
-      <%= share.dislikes %> <span class="glyphicon glyphicon glyphicon-thumbs-down"></span>
+      <%= share.likes %> <span class="glyphicon glyphicon-thumbs-up"></span>
+      <%= share.dislikes %> <span class="glyphicon glyphicon-thumbs-down"></span>
     </p>
     <span>Description:</span>
     <p class="description"><%=h truncate(share.description, length: 150) %></p>
