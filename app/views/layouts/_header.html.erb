@@ -10,8 +10,8 @@
           <li><%= link_to "Share a movie", share_path %></li>
           <li><%= link_to "Log out", logout_path, method: :delete %></li>
         <% else %>
-            <li><%= f.email_field :email %></li>
-            <li><%= f.password_field :password %></li>
+            <li><%= f.email_field :email, placeholder: "Please enter email!" %></li>
+            <li><%= f.password_field :password, placeholder: "Please enter password!" %></li>
             <li><%= f.submit "Log in" %></li>
         <% end %>
       </ul>
