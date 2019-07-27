@@ -8,6 +8,20 @@
       <% if logged_in? && share.user.id == @current_user.id %>
         <a data-confirm="Are you sure?" data-method="delete" href="/shares/<%= share.id %>" rel="nofollow">Delete</a>
       <% end %>
+      <a data-confirm="Are you sure?" data-method="post" href="/shares/<%= share.id %>" rel="nofollow">Delete</a>
+
+      <a data-confirm="Are you sure?" data-method="post" href="/shares/<%= share.id %>" rel="nofollow">Delete</a>
+    </p>
+    <p>
+      <%= form_for(Comment.new, :url => url_for(:controller => 'static_pages', :action => 'create_comments')) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+      <div class="form-group">
+        <%= f.label :description , "Comment" %>
+        <%= hidden_field_tag 'comment[share_id]', share.id  %>
+        <%= f.text_area :description, class: 'form-control', required: true %>
+        <%= f.submit "Comment", class: "btn btn-primary" %>
+      </div>
+    <% end %>
     </p>
     <p>
       <span class="user">Shared by: <%= share.user.email || 0 %></span>
