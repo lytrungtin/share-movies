@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-  before_action :logged_in_user, only: [:share]
+  before_action :logged_in_user, only: [:share, :favorites, :create_comments]
 
   def home
     @shares = Share.paginate(page: params[:page])
