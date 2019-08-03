@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   get  '/favorites',    to: 'static_pages#favorites'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-  resources :shares, param: :share_id
-  post   '/add_histories',   to: 'static_pages#create_histories'
-  post   '/add_favorites',   to: 'static_pages#create_favorites'
+  resources :shares, param: :share_id do
+    member do
+      patch :add_favorite
+    end
+  end
   post   '/add_comments',   to: 'static_pages#create_comments'
 end

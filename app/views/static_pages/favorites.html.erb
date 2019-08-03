@@ -1,0 +1,7 @@
+<% provide(:title, "Favorites") %>
+<div class="shares">
+  <% if @shares.any? %>
+    <%= render @shares %>
+    <%= will_paginate @shares %>
+  <% end %>
+</div>

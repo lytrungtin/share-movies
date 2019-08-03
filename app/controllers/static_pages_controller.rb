@@ -10,19 +10,13 @@ class StaticPagesController < ApplicationController
   end
 
   def histories
-    @share = current_user.shares.build if logged_in?
+    share_ids = current_user.histories.pluck(:share_id)
+    @shares = Share.where(id: share_ids).paginate(page: params[:page])
   end
 
   def favorites
-    @share = current_user.shares.build if logged_in?
-  end
-
-  def create_favorites
-    @share = current_user.shares.build if logged_in?
-  end
-
-  def create_histories
-    @share = current_user.shares.build if logged_in?
+    share_ids = current_user.favorites.pluck(:share_id)
+    @shares = Share.where(id: share_ids).paginate(page: params[:page])
   end
 
   def create_comments
@@ -38,15 +32,6 @@ class StaticPagesController < ApplicationController
 
 
   private
-
-  def history_params
-    params.require(:history).permit(:share_id)
-  end
-
-
-  def favorite_params
-    params.require(:favorite).permit(:share_id)
-  end
 
   def comment_params
     params.require(:comment).permit(:share_id, :description)

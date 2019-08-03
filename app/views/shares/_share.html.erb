@@ -5,12 +5,16 @@
   <div class="col-md-6">
     <p>
       <span class="title"><%= share.title %></span>
-      <% if logged_in? && share.user.id == @current_user.id %>
-        <a data-confirm="Are you sure?" data-method="delete" href="/shares/<%= share.id %>" rel="nofollow">Delete</a>
+      <% if logged_in? %>
+        <% if share.user.id == @current_user.id %>
+          <a data-confirm="Are you sure?" data-method="delete" href="/shares/<%= share.id %>" rel="nofollow">Delete</a> |
+        <% end %>
+        <% if @current_user.favorites.pluck(:share_id).include?(share.id) %>
+          This movie is in your favorites
+        <% else %>
+          <a data-confirm="Are you sure?" data-method="patch" href="/shares/<%= share.id %>/add_favorite" rel="nofollow">Add to favorites</a>
+    <% end %>
       <% end %>
-      <a data-confirm="Are you sure?" data-method="post" href="/shares/<%= share.id %>" rel="nofollow">Delete</a>
-
-      <a data-confirm="Are you sure?" data-method="post" href="/shares/<%= share.id %>" rel="nofollow">Delete</a>
     </p>
     <p>
       <%= form_for(Comment.new, :url => url_for(:controller => 'static_pages', :action => 'create_comments')) do |f| %>
