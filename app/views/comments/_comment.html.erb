@@ -1,0 +1,4 @@
+<p>
+  <span class="user">Commented by: <%= comment.user.email || 0 %></span>
+</p>
+<p class="description"><%=h truncate(comment.description, length: 150) %></p>

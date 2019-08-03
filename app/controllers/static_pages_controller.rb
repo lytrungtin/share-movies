@@ -9,11 +9,6 @@ class StaticPagesController < ApplicationController
     @share = current_user.shares.build if logged_in?
   end
 
-  def histories
-    share_ids = current_user.histories.pluck(:share_id)
-    @shares = Share.where(id: share_ids).paginate(page: params[:page])
-  end
-
   def favorites
     share_ids = current_user.favorites.pluck(:share_id)
     @shares = Share.where(id: share_ids).paginate(page: params[:page])

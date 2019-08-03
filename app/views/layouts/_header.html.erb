@@ -9,7 +9,6 @@
         <% if logged_in? %>
           <li><%= link_to "Share a movie", share_path %></li>
           <li><%= link_to "Favorites", favorites_path %></li>
-          <li><%= link_to "Histories", share_path %></li>
           <li><%= link_to "Log out", logout_path, method: :delete %></li>
         <% else %>
             <li><%= f.email_field :email, placeholder: "Please enter email!" %></li>

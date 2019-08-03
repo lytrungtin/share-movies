@@ -1,6 +1,9 @@
 <div class="row align-items-center" id="share-<%= share.id %>">
   <div class="col-md-6 videoWrapper">
     <iframe src='https://www.youtube.com/embed/<%= share.uid %>?rel=0&autoplay=<%= share.id == Share.first.id ? 1 : 0 %>' frameborder='0' allowfullscreen></iframe>
+    <% if share.comments.any? %>
+        <%= render share.comments %>
+    <% end %>
   </div>
   <div class="col-md-6">
     <p>
